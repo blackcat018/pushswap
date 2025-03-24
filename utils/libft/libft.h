@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:38:55 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/24 16:25:36 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/24 17:24:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_list
 {
 	void			*content;
 	int				value;
+	int				index;
 	struct s_list	*next;
 }					t_list;
 

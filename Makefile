@@ -2,7 +2,14 @@ NAME = push_swap
 LIBNAME = libpushswap.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror 
-files = input_check/parce input_check/doubles_check push_swap
+files = input_check/parce input_check/doubles_check push_swap \
+		operations/push \
+		operations/reverse_rotate \
+		operations/rotate \
+		operations/swap \
+		logic/range \
+		helper_funcs/get_node \
+
 CFILES = $(files:%=%.c)
 OBJS = $(files:%=%.o)
 
