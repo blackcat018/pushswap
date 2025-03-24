@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 23:15:14 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/24 20:05:31 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/24 23:49:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int	rb(t_list **stack_b);
 
 int	sa(t_list **stack_a);
 int	sb(t_list **stack_b);
+
+void 	handle_three(t_list **stack);
+void	handle_four(t_list **stack_a, t_list **stack_b);
+void	handle_five(t_list **stack_a, t_list **stack_b);
+
 
 int check_doubles(t_list **stack);
 

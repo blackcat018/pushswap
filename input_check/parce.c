@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 23:15:01 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/24 16:27:16 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/24 20:22:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ long	*get_args(char *str)
 			exit(1);
 		while(args[i])
 			i++;
-		nums = malloc(sizeof(int) * i);
+		nums = malloc(sizeof(long) * i);;
 		i = 0;
 		while(args[i])
 		{
