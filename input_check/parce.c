@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parce.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 23:15:01 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/23 23:15:02 by moel-idr         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:27:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	skip_numbers(int i, char *str)
 		i++;
 	return (i);
 }
+
 int	just_numbers(char *str)
 {
 	int	i;
@@ -53,16 +54,49 @@ int	just_numbers(char *str)
 			i++;
 			if (!ft_isdigit(str[i]))
 			{
-				write(2, "Error\n", 6);
+				ft_putstr_fd("Error! Non Digit detected\n", 1);
 				exit(EXIT_FAILURE);
 			}
 		}
 		i = skip_numbers(i, str);
 		if ((str[i] != '\0') && (str[i] != ' '))
 		{
-			write(2, "Error\n", 6);
+			ft_putstr_fd("Error! Non Digit detected\n", 1);
 			exit(EXIT_FAILURE);
 		}
 	}
 	return (0);
+}
+
+long	*get_args(char *str)
+{
+	int i;
+	char **args;
+	long *nums;
+
+	i = 0;
+	if(just_numbers(str) == 0)
+	{
+		args =ft_split(str,' ');
+		if(!args)
+			exit(1);
+		while(args[i])
+			i++;
+		nums = malloc(sizeof(int) * i);
+		i = 0;
+		while(args[i])
+		{
+			nums[i] = ft_atoi(args[i]);
+			if(nums[i] > 2147483647 || nums[i] < -2147483648)
+			{
+				free(nums);
+				ft_putstr_fd("number is not valid!",1);
+				exit(1);
+			}
+			i++;
+		}
+		return (nums);
+	}
+	ft_putstr_fd("Error while getting arguments",1);
+	exit(1);
 }

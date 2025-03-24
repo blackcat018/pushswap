@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 17:26:35 by moel-idr          #+#    #+#             */
-/*   Updated: 2024/11/03 11:30:48 by moel-idr         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:14:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int value)
 {
 	t_list	*list;
 
@@ -20,6 +20,6 @@ t_list	*ft_lstnew(void *content)
 	if (!list)
 		return (NULL);
 	list->next = NULL;
-	list->content = content;
+	list->value = value;
 	return (list);
 }
