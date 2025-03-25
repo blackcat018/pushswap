@@ -80,45 +80,63 @@ void	ff(void)
 	system("leaks push_swap");
 }
 
-int	main(int ac, char **av)
+static int	process_arguments(int ac, char **av, t_list **stack_a)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	int		i;
+	int		j;
+	int		elems;
 	long	*tab;
 
-	int(i), (j), (elems);
-	if (ac < 2)
-		return (0);
 	i = 1;
-	elems = 0;
-	stack_b = NULL;
-	stack_a = NULL;
 	while (i < ac)
 	{
 		tab = get_args(av[i]);
 		if (!tab)
-			return (cleanup(&stack_a, &stack_b), ft_putstr_fd("Error\n", 2), 1);
+			return (1);
 		elems = count_element(av[i]);
 		if (elems == 0)
-			return (free(tab), ft_putstr_fd("Error\n", 2), 1);
+			return (free(tab), 1);
 		j = 0;
 		while (j < elems)
 		{
-			ft_lstadd_back(&stack_a, ft_lstnew(tab[j]));
-			if (check_doubles(&stack_a) == 1)
-				return (cleanup(&stack_a, &stack_b), free(tab),
-					ft_putstr_fd("Error\n", 2), 1);
+			ft_lstadd_back(stack_a, ft_lstnew(tab[j]));
+			if (check_doubles(stack_a) == 1)
+				return (free(tab), 1);
 			j++;
 		}
 		free(tab);
 		i++;
 	}
-	if (is_it_minimal(stack_a) != 0)
+	return (0);
+}
+
+static int	handle_stacks(t_list **stack_a, t_list **stack_b)
+{
+	if (is_it_minimal(*stack_a) != 0)
 	{
-		handle_minimals(&stack_a, &stack_b);
-		cleanup(&stack_a, &stack_b);
+		handle_minimals(stack_a, stack_b);
+		return (1);
+	}
+	range(stack_a, stack_b);
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	if (ac < 2)
 		return (0);
+	stack_a = NULL;
+	stack_b = NULL;
+	if (process_arguments(ac, av, &stack_a) != 0)
+	{
+		cleanup(&stack_a, &stack_b);
+		return (ft_putstr_fd("Error\n", 2), 1);
 	}
 	atexit(ff);
-	return (range(&stack_a, &stack_b), cleanup(&stack_a, &stack_b), 0);
+	handle_stacks(&stack_a, &stack_b);
+	cleanup(&stack_a, &stack_b);
+	return (0);
 }
