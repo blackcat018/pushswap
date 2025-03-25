@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+void	del(void *content);
+
 void	range(t_list **stack_a, t_list **stack_b);
 
 int		just_numbers(char *str);

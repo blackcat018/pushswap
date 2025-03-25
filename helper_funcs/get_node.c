@@ -18,8 +18,8 @@ t_list	*find_smallest_nb(t_list **stack)
 	t_list	*current;
 	t_list	*small;
 
-	if (*stack == NULL)
-        return NULL;  
+	// if (*stack == NULL)
+    //     return NULL;  
 	current = *stack;
 	small = current;
 	nb = current->value;
@@ -41,8 +41,8 @@ t_list	*find_biggest_nb(t_list **stack)
 	t_list	*current;
 	t_list	*big;
 
-    if (*stack == NULL)
-        return NULL;  
+    // if (*stack == NULL)
+    //     return NULL;  
 	current = *stack;
 	big = current;
 	nb = current->value;

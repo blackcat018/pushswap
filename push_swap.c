@@ -70,10 +70,10 @@ int	count_element(char *av)
 void	cleanup(t_list **stack_a, t_list **stack_b)
 {
 	if (stack_a && *stack_a)
-		ft_lstclear(stack_a, free);
+		ft_lstclear(stack_a, del);
 			// Assumes your lstclear handles freeing content
 	if (stack_b && *stack_b)
-		ft_lstclear(stack_b, free);
+		ft_lstclear(stack_b, del);
 }
 void	ff(void)
 {
@@ -106,7 +106,7 @@ int	main(int ac, char **av)
 		{
 			ft_lstadd_back(&stack_a, ft_lstnew(tab[j]));
 			if (check_doubles(&stack_a) == 1)
-				return (free(tab), cleanup(&stack_a, &stack_b),
+				return (cleanup(&stack_a, &stack_b), free(tab),
 					ft_putstr_fd("Error\n", 2), 1);
 			j++;
 		}
@@ -119,6 +119,6 @@ int	main(int ac, char **av)
 		cleanup(&stack_a, &stack_b);
 		return (0);
 	}
-	// atexit(ff);
+	atexit(ff);
 	return (range(&stack_a, &stack_b), cleanup(&stack_a, &stack_b), 0);
 }
