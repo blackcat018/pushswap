@@ -38,6 +38,8 @@ int		rb(t_list **stack_b);
 int		sa(t_list **stack_a);
 int		sb(t_list **stack_b);
 
+int	is_it_minimal(t_list *stack_a);
+void	handle_minimals(t_list **stack_a, t_list **stack_b);
 void	handle_two(t_list **stack_a);
 void	handle_three(t_list **stack);
 void	handle_four(t_list **stack_a, t_list **stack_b);

@@ -12,35 +12,6 @@
 
 #include "push_swap.h"
 
-int	is_it_minimal(t_list *stack_a)
-{
-	if (ft_lstsize(stack_a) == 2)
-		return (2);
-	else if (ft_lstsize(stack_a) == 3)
-		return (3);
-	else if (ft_lstsize(stack_a) == 4)
-		return (4);
-	else if (ft_lstsize(stack_a) == 5)
-		return (5);
-	return (0);
-}
-
-void	handle_minimals(t_list **stack_a, t_list **stack_b)
-{
-	int	size;
-
-	size = is_it_minimal(*stack_a);
-	if (size == 2)
-		handle_two(stack_a);
-	else if (size == 3)
-		handle_three(stack_a);
-	else if (size == 4)
-		handle_four(stack_a, stack_b);
-	else if (size == 5)
-		handle_five(stack_a, stack_b);
-	else
-		return ;
-}
 int	count_element(char *av)
 {
 	int(has_digit), (element), (i);
