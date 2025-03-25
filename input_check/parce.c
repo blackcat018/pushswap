@@ -6,7 +6,7 @@
 /*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 23:15:01 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/25 14:25:20 by moel-idr         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:40:03 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,46 @@ int	just_numbers(char *str)
 	return (0);
 }
 
+void	free_split(char **strs)
+{
+	char	**temp;
+
+	if (strs == NULL)
+		return ;
+	temp = strs;
+	while (*temp)
+	{
+		free(*temp);
+		temp++;
+	}
+	free(strs);
+}
+
 long	*get_args(char *str)
 {
-	int		i;
 	char	**args;
 	long	*nums;
 
+	int (i), (count);
+	if (just_numbers(str) != 0)
+		return (ft_putstr_fd("Error\n", 2), exit(1), NULL);
+	args = ft_split(str, ' ');
+	if (!args)
+		exit(1);
+	count = 0;
+	while (args[count])
+		count++;
+	nums = malloc(sizeof(long) * (count + 1));
+	if (!nums)
+		return (free_split(args), ft_putstr_fd("Error\n", 2), exit(1), NULL);
 	i = 0;
-	if (just_numbers(str) == 0)
+	while (i < count)
 	{
-		args = ft_split(str, ' ');
-		if (!args)
-			exit(1);
-		while (args[i])
-			i++;
-		nums = malloc(sizeof(long) * i);
-		;
-		i = 0;
-		while (args[i])
-		{
-			nums[i] = ft_atoi(args[i]);
-			if (nums[i] > 2147483647 || nums[i] < -2147483648)
-				(free(nums), ft_putstr_fd("Error\n", 2), exit(1));
-			i++;
-		}
-		return (nums);
+		nums[i] = ft_atoi(args[i]);
+		if (nums[i] > 2147483647 || nums[i] < -2147483648)
+			return (free(nums), free_split(args), ft_putstr_fd("Error\n", 2),
+				exit(1), NULL);
+		i++;
 	}
-	(ft_putstr_fd("Error\n", 2), exit(1));
+	return (free_split(args), nums);
 }

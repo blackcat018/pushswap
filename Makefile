@@ -1,7 +1,7 @@
 NAME = push_swap
 LIBNAME = libpushswap.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 
 # Source files
 files = input_check/parce \

@@ -6,7 +6,7 @@
 /*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:42:00 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/25 14:49:03 by moel-idr         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:45:49 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_it_minimal(t_list *stack_a)
 {
-	if(ft_lstsize(stack_a) == 2)
+	if (ft_lstsize(stack_a) == 2)
 		return (2);
 	else if (ft_lstsize(stack_a) == 3)
 		return (3);
@@ -41,7 +41,6 @@ void	handle_minimals(t_list **stack_a, t_list **stack_b)
 	else
 		return ;
 }
-
 int	count_element(char *av)
 {
 	int(has_digit), (element), (i);
@@ -68,6 +67,18 @@ int	count_element(char *av)
 	}
 	return (0);
 }
+void	cleanup(t_list **stack_a, t_list **stack_b)
+{
+	if (stack_a && *stack_a)
+		ft_lstclear(stack_a, free);
+			// Assumes your lstclear handles freeing content
+	if (stack_b && *stack_b)
+		ft_lstclear(stack_b, free);
+}
+void	ff(void)
+{
+	system("leaks push_swap");
+}
 
 int	main(int ac, char **av)
 {
@@ -76,6 +87,8 @@ int	main(int ac, char **av)
 	long	*tab;
 
 	int(i), (j), (elems);
+	if (ac < 2)
+		return (0);
 	i = 1;
 	elems = 0;
 	stack_b = NULL;
@@ -83,13 +96,18 @@ int	main(int ac, char **av)
 	while (i < ac)
 	{
 		tab = get_args(av[i]);
+		if (!tab)
+			return (cleanup(&stack_a, &stack_b), ft_putstr_fd("Error\n", 2), 1);
 		elems = count_element(av[i]);
+		if (elems == 0)
+			return (free(tab), ft_putstr_fd("Error\n", 2), 1);
 		j = 0;
 		while (j < elems)
 		{
 			ft_lstadd_back(&stack_a, ft_lstnew(tab[j]));
 			if (check_doubles(&stack_a) == 1)
-				return (ft_putstr_fd("Error\n", 2), 1);
+				return (free(tab), cleanup(&stack_a, &stack_b),
+					ft_putstr_fd("Error\n", 2), 1);
 			j++;
 		}
 		free(tab);
@@ -98,7 +116,9 @@ int	main(int ac, char **av)
 	if (is_it_minimal(stack_a) != 0)
 	{
 		handle_minimals(&stack_a, &stack_b);
+		cleanup(&stack_a, &stack_b);
 		return (0);
 	}
-	return (range(&stack_a, &stack_b), 0);
+	// atexit(ff);
+	return (range(&stack_a, &stack_b), cleanup(&stack_a, &stack_b), 0);
 }
