@@ -6,11 +6,37 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:42:00 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/24 20:06:16 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/25 12:06:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+
+int is_it_minimal(t_list *stack_a)
+{
+    if (ft_lstsize(stack_a) == 3)
+        return (3);
+    else if (ft_lstsize(stack_a) == 4)
+        return (4);
+    else if (ft_lstsize(stack_a) == 5)
+        return (5);
+    return (0);
+}
+
+void handle_minimals(t_list **stack_a, t_list **stack_b)
+{
+    int size;
+
+    size = is_it_minimal(*stack_a);
+    if (size == 3)
+        handle_three(stack_a);
+    else if (size == 4)
+        handle_four(stack_a, stack_b);
+    else if (size == 5)
+        handle_five(stack_a, stack_b);
+    else
+        return;
+}
 
 int main(int ac, char **av)
 {
@@ -22,6 +48,7 @@ int main(int ac, char **av)
     i = 1;
     stack_b = NULL;
     stack_a = NULL;
+    
     while(i < ac)
     {
         tab = get_args(av[i]);
@@ -36,6 +63,12 @@ int main(int ac, char **av)
         free(tab);
         i++;
     }
+    if(is_it_minimal(stack_a) != 0)
+    {
+        handle_minimals(&stack_a, &stack_b);
+        return(0);
+    }
+    
     range(&stack_a, &stack_b);
     return (0);
 }

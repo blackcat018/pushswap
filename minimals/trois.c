@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 20:46:06 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/24 23:51:44 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/25 12:11:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void middle_is_small(t_list **stack, t_list *big)
 {
-    if((*stack)->next == big)
+    if(big->next == NULL)
         sa(stack);
     else
         ra(stack);
@@ -22,7 +22,7 @@ void middle_is_small(t_list **stack, t_list *big)
 
 void middle_is_big(t_list **stack, t_list *small)
 {
-    if((*stack)->next == small)
+    if(small->next == NULL)
         rra(stack);
     else
     {
@@ -33,7 +33,7 @@ void middle_is_big(t_list **stack, t_list *small)
 
 void middle(t_list **stack, t_list *small)
 {
-    if((*stack)->next == small)
+    if(small->next == NULL)
     {
         sa(stack);
         rra(stack);
