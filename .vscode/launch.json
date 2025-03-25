@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/moel-idr/Desktop/swap_git",
+      "program": "/Users/moel-idr/Desktop/swap_git/build/Debug/outDebug"
+    }
+  ]
+}

@@ -3,53 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 23:15:14 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/24 23:49:30 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/25 14:47:20 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
-#include "utils/libft/libft.h"
-#include<stdio.h>
-#include <stdlib.h>
+# define PUSH_SWAP_H
+# include "utils/libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
 
+void	range(t_list **stack_a, t_list **stack_b);
 
-
-typedef struct range
-{
-	int		min;
-	int		max;
-}			t_range;
-
-void range(t_list **stack_a, t_list **stack_b);
-
+int		just_numbers(char *str);
 long	*get_args(char *str);
 
 t_list	*find_smallest_nb(t_list **stack);
 t_list	*find_biggest_nb(t_list **stack);
 
-int	pa(t_list **stack_a, t_list **stack_b);
-int	pb(t_list **stack_a, t_list **stack_b);
+int		pa(t_list **stack_a, t_list **stack_b);
+int		pb(t_list **stack_a, t_list **stack_b);
 
-int	rra(t_list **stack_a);
-int	rrb(t_list **stack_b);
+int		rra(t_list **stack_a);
+int		rrb(t_list **stack_b);
 
-int	ra(t_list **stack_a);
-int	rb(t_list **stack_b);
+int		ra(t_list **stack_a);
+int		rb(t_list **stack_b);
 
-int	sa(t_list **stack_a);
-int	sb(t_list **stack_b);
+int		sa(t_list **stack_a);
+int		sb(t_list **stack_b);
 
-void 	handle_three(t_list **stack);
+void	handle_two(t_list **stack_a);
+void	handle_three(t_list **stack);
 void	handle_four(t_list **stack_a, t_list **stack_b);
 void	handle_five(t_list **stack_a, t_list **stack_b);
 
-
-int check_doubles(t_list **stack);
+int		check_doubles(t_list **stack);
 
 #endif
-
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 18:11:37 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/24 16:25:17 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/25 14:33:19 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ long	ft_atoi(const char *str)
 	}
 	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
-		if (num > (LONG_MAX - (str[i] - '0')) / 10 && signe == 1)
-			return (-1);
-		if (num > (LONG_MAX - (str[i] - '0')) / 10 && signe == -1)
-			return (0);
 		num = (num * 10) + (str[i] - 48);
 		i++;
 	}

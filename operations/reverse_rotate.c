@@ -13,8 +13,8 @@ int	reverseRotate(t_list **stack)
 	{
 		if (head->next->next == NULL)
 		{
-			 head->next = NULL;
-			 break ;
+			head->next = NULL;
+			break ;
 		}
 		head = head->next;
 	}

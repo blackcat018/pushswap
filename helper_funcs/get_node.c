@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_node.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 23:16:41 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/24 16:47:30 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/25 13:29:23 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_list	*find_smallest_nb(t_list **stack)
 	t_list	*current;
 	t_list	*small;
 
+	if (*stack == NULL)
+        return NULL;  
 	current = *stack;
 	small = current;
 	nb = current->value;
@@ -39,6 +41,8 @@ t_list	*find_biggest_nb(t_list **stack)
 	t_list	*current;
 	t_list	*big;
 
+    if (*stack == NULL)
+        return NULL;  
 	current = *stack;
 	big = current;
 	nb = current->value;
@@ -52,29 +56,4 @@ t_list	*find_biggest_nb(t_list **stack)
 		current = current->next;
 	}
 	return (big);
-}
-
-int num_of_moves(t_list **stack, t_list *curr)
-{
-	t_list *tmp;
-	int moves;
-	int pos;
-	int size;
-
-	moves = 0;
-	pos = 0;
-	tmp = *stack;
-	size = ft_lstsize(tmp);
-	while(tmp && tmp != curr)
-	{
-		pos++;
-		tmp = tmp->next;
-	}
-	if (pos <= size / 2)
-		while(pos-- > 0)
-			moves++;
-	else
-		while(pos++ < size)
-			moves++;
-	return(moves);
 }

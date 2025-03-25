@@ -31,4 +31,3 @@ int	rb(t_list **stack_b)
 	ft_putendl_fd("rb", 1);
 	return (0);
 }
-
