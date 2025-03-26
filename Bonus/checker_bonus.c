@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:42:00 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/25 21:29:26 by moel-idr         ###   ########.fr       */
+/*   Updated: 2025/03/25 23:59:23 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	count_element(char *av)
 {
@@ -82,7 +82,7 @@ static int	handle_stacks(t_list **stack_a, t_list **stack_b)
 		handle_minimals(stack_a, stack_b);
 		return (1);
 	}
-	range(stack_a, stack_b);
+	read_input(stack_a, stack_b);
 	return (0);
 }
 
@@ -100,9 +100,8 @@ int	main(int ac, char **av)
 		cleanup(&stack_a, &stack_b);
 		return (ft_putstr_fd("Error\n", 2), 1);
 	}
-	if (sort_check(stack_a) == 1)
-		return (cleanup(&stack_a, &stack_b), 0);
-	handle_stacks(&stack_a, &stack_b);
+	if (handle_stacks(&stack_a, &stack_b) == 1)
+		return (1);
 	cleanup(&stack_a, &stack_b);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:38:55 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/24 17:24:56 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/25 20:19:37 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-long					ft_atoi(const char *str);
+long				ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
 int					ft_isalnum(int i);
 int					ft_isalpha(int c);
 int					ft_isascii(int i);
-int					ft_isdigit(int i);
+int					ft_isdigit(int n);
 int					ft_isprint(int i);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstnew(int value);
+t_list				*ft_lstnew(int value);
 int					ft_lstsize(t_list *lst);
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),

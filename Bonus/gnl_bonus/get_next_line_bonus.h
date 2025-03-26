@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 18:11:37 by moel-idr          #+#    #+#             */
-/*   Updated: 2025/03/25 20:18:33 by moel-idr         ###   ########.fr       */
+/*   Created: 2024/11/20 08:03:38 by moel-idr          #+#    #+#             */
+/*   Updated: 2025/03/25 22:05:05 by moel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-long	ft_atoi(const char *str)
-{
-	int		i;
-	long	num;
-	int		signe;
+# include "../../utils/libft/libft.h"
+# include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 9999
+# endif
 
-	num = 0;
-	i = 0;
-	signe = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			signe = -signe;
-		i++;
-	}
-	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
-	{
-		num = (num * 10) + (str[i] - 48);
-		i++;
-	}
-	return (num * signe);
-}
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+size_t	ft_strlen(const char *str);
+char	*ft_strchr(const char *str, int c);
+char	*get_next_line(int fd);
+
+#endif

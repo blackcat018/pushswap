@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moel-idr <moel-idr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/25 20:28:04 by moel-idr          #+#    #+#             */
+/*   Updated: 2025/03/25 20:28:05 by moel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-int	reverseRotate(t_list **stack)
+int	reverserotate(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;
@@ -25,7 +37,7 @@ int	reverseRotate(t_list **stack)
 
 int	rra(t_list **stack_a)
 {
-	if (reverseRotate(stack_a) == -1)
+	if (reverserotate(stack_a) == -1)
 		return (-1);
 	ft_putendl_fd("rra", 1);
 	return (0);
@@ -33,7 +45,7 @@ int	rra(t_list **stack_a)
 
 int	rrb(t_list **stack_b)
 {
-	if (reverseRotate(stack_b) == -1)
+	if (reverserotate(stack_b) == -1)
 		return (-1);
 	ft_putendl_fd("rrb", 1);
 	return (0);
